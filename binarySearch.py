@@ -1,3 +1,35 @@
+def vincentBinarySearch(arr, target, low, high):
+    while(high >= low):
+        mid = int((high - low)/2) + low
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] > target:
+            high = mid - 1
+        else:
+            low = mid + 1
+    return -1
+
+
+myArr = [1,3,4,7,8,10,12,14,23,24,32,44]
+target1 = 32
+print(vincentBinarySearch(myArr, target1, 0, len(myArr)-1))
+
+def vincentRecursiveBinarySearch(arr, target, low, high):
+    if high >= low:
+        mid = int((high - low)/2) + low
+        if arr[mid] == target:
+            return mid
+        elif target > arr[mid]:
+            return vincentRecursiveBinarySearch(arr, target, mid + 1, high)
+        else:
+            return vincentRecursiveBinarySearch(arr, target, low, mid - 1)
+    else:
+        return -1
+
+print(vincentRecursiveBinarySearch(myArr, target1, 0, len(myArr)-1))
+
+
+################################################################################
 '''
 # Looped Binary Search in python
 def binarySearch(array, x, low, high):
@@ -63,33 +95,3 @@ if result != -1:
 else:
     print("Not found")
 '''
-
-def vincentBinarySearch(arr, target, low, high):
-    while(high >= low):
-        mid = int((high - low)/2) + low
-        if arr[mid] == target:
-            return mid
-        elif arr[mid] > target:
-            high = mid - 1
-        else:
-            low = mid + 1
-    return -1
-
-
-myArr = [1,3,4,7,8,10,12,14,23,24,32,44]
-target1 = 32
-print(vincentBinarySearch(myArr, target1, 0, len(myArr)-1))
-
-def vincentRecursiveBinarySearch(arr, target, low, high):
-    if high >= low:
-        mid = int((high - low)/2) + low
-        if arr[mid] == target:
-            return mid
-        elif target > arr[mid]:
-            return vincentRecursiveBinarySearch(arr, target, mid + 1, high)
-        else:
-            return vincentRecursiveBinarySearch(arr, target, low, mid - 1)
-    else:
-        return -1
-
-print(vincentRecursiveBinarySearch(myArr, target1, 0, len(myArr)-1))
